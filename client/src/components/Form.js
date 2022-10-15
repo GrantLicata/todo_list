@@ -4,26 +4,27 @@ import { nanoid } from 'nanoid'
 
 const Form = (props) => {
 
-    const {task, setTask, text, setText, checked, setChecked} = props;
+    const {task, setTask} = props;
+
+    const [text, setText] = useState("")
+    const [checked, setChecked] = useState("")
 
     const submitHandler = (e) => {
         e.preventDefault()
         const taskObject = {
           id: nanoid(),
           text: text, 
-          checked: false
+          checked: checked
         }
         setTask([...task, taskObject])
-        console.log(task)
-    
         setText("");
-        setChecked(false);
+        setChecked("");
     }
 
     return (
     <div>
         <form onSubmit={submitHandler} className='container col-6 d-flex mt-4 '>
-            <input type='text' className='form-control me-2' onChange={(e) => setText(e.target.value)} />
+            <input type='text' className='form-control me-2' onChange={(e) => setText(e.target.value)} value={text} />
             <button className='btn btn-primary'>Add</button>
         </form>
     </div>

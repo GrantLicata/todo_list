@@ -6,14 +6,13 @@ import './App.css';
 function App() {
 
   const [task, setTask] = useState([])
-  const [text, setText] = useState("")
-  const [checked, setChecked] = useState("")
 
   return (
     <div className="App" >
-      <Form task={task} setTask={setTask} text={text} setText={setText} checked={checked} setChecked={setChecked}/>
-      {task.map((Item) => (
-        <Task task={task} setTask={setTask} text={text} setText={setText} checked={checked} setChecked={setChecked}/>
+      <h1 className='text-center mt-2'>To-do List</h1>
+      <Form task={task} setTask={setTask}/>
+      {task.map((item,index) => (
+        <Task task={task} key={item.id} setTask={setTask} text={item.text} checked={item.checked} id={item.id}/>
       ))}
     </div>
   );
