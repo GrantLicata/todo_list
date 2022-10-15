@@ -11,12 +11,15 @@ const Form = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        const taskObject = {
-          id: nanoid(),
-          text: text, 
-          checked: checked
+
+        if (text) {
+            const taskObject = {
+              id: nanoid(),
+              text: text, 
+              checked: checked
+            }
+            setTask([...task, taskObject])
         }
-        setTask([...task, taskObject])
         setText("");
         setChecked("");
     }
